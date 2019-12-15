@@ -1,21 +1,28 @@
 <template>
-    <div class="">
-        <VDropdown
-            text="Categories"
-            transition="slide-up"
-            class="styled"
-        >
-            <nav>
-                <ul v-for="item in categories">
-                    <li>{{ item }}</li>
-                </ul>
-            </nav>
-        </VDropdown>
+    <div class="row">
+        <div class="col-3">
+            <div class="form-group">
+                <select
+                    class="form-control form-control--brand-red"
+                    v-model="filteredData"
+                >
+                    <option value="" disabled selected>Select Category</option>
+                    <option
+                        :value="item"
+                        v-for="item in categories"
+                    >{{ item }}
+                    </option>
+                    <option
+                        value="All"
+                    >All
+                    </option>
+                </select>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-import { VDropdown } from 'vuetensils'
 
 export default {
     name: 'FilterBar',
@@ -25,29 +32,21 @@ export default {
             default: []
         }
     },
-    components: {
-        VDropdown
+    data() {
+        return {
+            currentSportCategory: null,
+
+        }
     },
     computed: {
-        getDropDownContent() {
-            // return this.categories.reduce((unique, category) => {
-            //     unique.includes(category) ? unique : [...unique, category], []
-            // })
-
-           //  console.log(this.categories);
-           // [...new Set(this.categories)];
-           //  console.log(this.categories);
-
+        filteredData: {
+            get () {
+                return this.value
+            },
+            set (newValue) {
+                this.$emit('change', newValue )
+            }
         }
     },
-    methods: {
-        prepareDropDownContent() {
-            console.log(this.categories);
-
-        }
-    },
-    created() {
-        console.log('this.categories', this.categories)
-    }
 }
 </script>

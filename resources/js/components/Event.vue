@@ -2,12 +2,14 @@
     <div class="row">
         <div class="col-2">
             {{ eventItem.date }}
+        </div>
+        <div class="col-1">
             {{ eventItem.time }}
         </div>
         <div class="col-1">
             {{ eventItem.discipline.name }}
         </div>
-        <div class="col-5">
+        <div class="col-4">
             <span class="px-1"> {{ eventItem.hometeam.name }} </span>
             <span>|</span>
             <span class="px-1"> {{ eventItem.outwardteam.name }} </span>
