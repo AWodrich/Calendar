@@ -1,0 +1,13 @@
+.content-class{
+
+    &__list-item {
+        text-decoration: none;
+        padding: 1rem 0;
+        box-shadow: 0 .2rem .2rem rgba(0, 0, 0, .05);
+        &:hover {
+            background-color: $color--darkblue;
+            color: $color--light;
+            transition: all .2s ease-in-out;
+        }
+    }
+}

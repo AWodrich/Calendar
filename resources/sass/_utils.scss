@@ -1,0 +1,34 @@
+.h-full {
+    height: 100%;
+}
+
+.text--darkblue {
+    color: $color--darkblue;
+}
+.text--lightblue {
+    color: $color--light;
+}
+.text--red {
+    color: $color--red;
+}
+
+.bg--darkblue {
+    background-color: $color--darkblue;
+}
+.bg--light {
+    background-color: $color--light;
+}
+.bg--red {
+    background-color: $color--red;
+}
+
+
+// spacings
+
+.pt--md {
+    padding-top: 5rem;
+}
+
+.pt--lg {
+    padding-top: 8rem;
+}

@@ -1,0 +1,54 @@
+// Font Weights
+//--------------------------------------------------
+$font-light: 200 !default;
+$font-normal: 400 !default;
+$font-regular: $font-normal !default;
+$font-medium: 600 !default;
+$font-semibold: 700 !default;
+$font-bold: 800 !default;
+
+
+
+// Typography
+$font-family-sans-serif: 'Volte', sans-serif;
+$font-size-base: 0.9rem;
+$font-size-md: ($font-size-base * 2);
+$font-size-lg: ($font-size-base * 3);
+$line-height-base: 1.6;
+
+// Colors
+$blue: #00283C;
+$white: #fff;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+
+
+/*------------------------------------------------------*\
+     Project Brand Colors
+\*------------------------------------------------------*/
+$color--darkblue: rgb(0, 40, 60);
+$color--red: rgb(255, 56, 0);
+$color--light: rgb(255, 255, 255);
+$color--dark: rgb(0, 0, 0);
+
+
+
+$primary:       $color--red !default;
+
+// Body
+$body-bg: $color--darkblue;
+$body-color: $body-bg;
+$border-radius: .8rem !default;
+$border-radius-lg: 1.6rem !default;
+$border-radius-sm: .2rem !default;
+
+
+$btn-font-weight: $font-bold;
+$link-color: $body-bg;

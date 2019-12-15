@@ -1,0 +1,18 @@
+.events-list {
+
+    &__item {
+        background-color: $color--light;
+        color: $color--darkblue;
+
+        &:hover {
+            background-color: $color--darkblue;
+            color: $color--light;
+            transition: background-color .4s ease-in-out;
+        }
+    }
+
+    &__navigation-bar {
+        background-color: $color--light;
+        color: $color--darkblue;
+    }
+}

@@ -1,0 +1,25 @@
+/*******************************************************************************
+ *
+ * Überschriften
+ *
+ ******************************************************************************/
+
+
+.heading {
+
+    font-weight: $font-regular;
+    font-size: $font-size-md;
+
+
+   &--main {
+        font-weight: $font-bold;
+        font-size: $font-size-lg;
+    }
+
+
+   &--section {
+        font-weight: $font-semibold;
+        font-size: $font-size-md;
+
+    }
+}

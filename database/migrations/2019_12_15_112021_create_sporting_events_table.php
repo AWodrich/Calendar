@@ -20,9 +20,10 @@ class CreateSportingEventsTable extends Migration
             $table->foreign('_home_id')->references('id')->on('clubs')->onDelete('cascade');;
             $table->unsignedBigInteger('_outward_id');
             $table->foreign('_outward_id')->references('id')->on('clubs')->onDelete('cascade');;
-            $table->unsignedBigInteger('_disciplines_id');
-            $table->foreign('_disciplines_id')->references('id')->on('disciplines');
-            $table->dateTime('date', 0);
+            $table->unsignedBigInteger('_discipline_id');
+            $table->foreign('_discipline_id')->references('id')->on('disciplines');
+            $table->date('date');
+            $table->time('time',0);
             $table->string('referee');
             $table->string('location');
             $table->timestamps();

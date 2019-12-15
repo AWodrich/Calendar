@@ -13,6 +13,7 @@ $factory->define(SportingEvent::class, function (Faker $faker)
         'location'        => $faker->city,
         'referee'         => $faker->name,
         'date'            => $faker->date(),
+        'time'            => $faker->time(),
         '_home_id'        => function ()
         {
             return App\Club::inRandomOrder()->first()->id;
@@ -21,7 +22,7 @@ $factory->define(SportingEvent::class, function (Faker $faker)
         {
             return App\Club::inRandomOrder()->first()->id;
         },
-        '_disciplines_id' => function ()
+        '_discipline_id' => function ()
         {
             return App\Discipline::inRandomOrder()->first()->id;
         },
