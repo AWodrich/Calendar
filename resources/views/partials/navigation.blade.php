@@ -2,7 +2,10 @@
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-6">
-                <a href="{{ trans('links.homepage') }}">
+                <a
+                    href="https://www.sportradar.com/"
+                    target="_blank"
+                >
                     <img
                         class="navigation__logo"
                         src="{{ asset('/images/logo.png') }}"

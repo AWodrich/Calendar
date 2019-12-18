@@ -9,17 +9,24 @@
             <h3 class="flow-text text--lightblue mt-3">Event</h3>
             <div class="row">
                 <div class="col-6 mb-3">
-                    <label
-                        class="create-form__label"
-                        for="eventName"
-                    >Event</label>
-                    <input
-                        v-model="name"
-                        class="form-control"
-                        name="eventName"
-                        id="eventName"
-                        type="text"
+                    <select
+                        class="form-control form-control--brand-red"
+                        v-model="selectedCategory"
+                        id="selectedCategory"
+                        name="selectedCategory"
                     >
+                        <option
+                            value=""
+                            disabled
+                            selected
+                        >Select Category
+                        </option>
+                        <option
+                            :value="item"
+                            v-for="item in categories"
+                        >{{ item }}
+                        </option>
+                    </select>
                 </div>
             </div>
 
@@ -140,6 +147,12 @@ export default {
     components: {
         'vuejs-datepicker': Datepicker
     },
+    props: {
+        categories: {
+            type: Array,
+            default: []
+        }
+    },
     data() {
         return {
             date: new Date(),
@@ -148,30 +161,33 @@ export default {
             referee: '',
             homeTeam: '',
             outwardTeam: '',
-            name: ''
+            name: '',
+            category: ''
         }
     },
     methods: {
         submit() {
-
-            let month = this.date.getUTCMonth() + 1;
-            let day = this.date.getUTCDate();
-            let year = this.date.getUTCFullYear();
-            let formattedDate = year + month + day;
-
-            console.log('formattedDate', formattedDate)
             this.$emit('createdEvent', {
-                name: this.name,
-                date: formattedDate,
+                date: this.date,
                 time: this.time,
                 location: this.location,
                 referee: this.referee,
                 home_team: this.homeTeam,
-                outward_team: this.outwardTeam
+                outward_team: this.outwardTeam,
+                category: this.category
             })
         }
-
-    }
+    },
+    computed: {
+        selectedCategory: {
+            get() {
+                return this.value
+            },
+            set(newValue) {
+                this.category = newValue;
+            }
+        }
+    },
 }
 </script>
 

@@ -11,9 +11,15 @@
 |
 */
 
-Route::get('/', 'ViewController@index');
+Route::get('/', [
+    'as'   => 'index',
+    'uses' => 'ViewController@index',
+]);
 
-Route::get('/admin', 'ViewController@admin')->name('admin');
+Route::get('/admin', [
+    'as'   => 'admin',
+    'uses' => 'ViewController@admin',
+]);
 
 Route::delete('/admin/delete/{id}', 'ViewController@delete');
 

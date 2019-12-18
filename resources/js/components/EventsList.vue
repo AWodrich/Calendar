@@ -47,9 +47,17 @@
 
             <CreateEvent
                 @createdEvent="createEvent"
+                :categories="categories"
                 id="createEvent"
-                v-if="adminMode"
+                v-if="adminMode && !successMessage"
             />
+            <transition name="fade">
+                <div
+                    class="flow-text text--lightblue mt-5"
+                    v-if="successMessage"
+                >Event successfully created
+                </div>
+            </transition>
 
 
         </div>
@@ -94,7 +102,8 @@ export default {
             list: [],
             categories: [],
             currentSportCategory: null,
-            eventDate: ''
+            eventDate: '',
+            successMessage: false
         }
 
     },
@@ -127,7 +136,7 @@ export default {
             var self = this;
             this.$http.delete(`/admin/delete/${ eventItem.id }`)
                 .then(function(data) {
-                    console.log('event removed', data);
+                    location.reload();
                 }, function(error) {
                     // Error response from server.
                     alert('Something went wrong.');
@@ -137,9 +146,15 @@ export default {
         createEvent(event) {
             var self = this;
 
+            this.list.map(item => {
+                if (item.discipline.name === event.category) {
+                    event.discipline_id = item.discipline.id;
+                }
+            })
+
             this.$http.post('/admin/create-event', event)
                 .then(function(data) {
-                    console.log('event created', data);
+                    self.successMessage = true;
                 }, function(error) {
                     // Error response from server.
                     alert('Something went wrong.');
