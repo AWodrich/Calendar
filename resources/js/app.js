@@ -7,6 +7,7 @@
 import Vue from 'vue';
 
 import EventsList from './components/EventsList';
+import SportEvents from './components/SportEvents';
 
 require('./bootstrap');
 
@@ -33,6 +34,7 @@ import { VDropdown } from "vuetensils"
 
 Vue.component("VDropdown", VDropdown)
 Vue.component('EventsList', EventsList);
+Vue.component('SportEvents', SportEvents);
 
 
 const app = new Vue({
@@ -41,6 +43,7 @@ const app = new Vue({
     },
     components: {
         EventsList,
+        SportEvents
     },
 
 }).$mount('#app');

@@ -7,8 +7,6 @@ $font-medium: 600 !default;
 $font-semibold: 700 !default;
 $font-bold: 800 !default;
 
-
-
 // Typography
 $font-family-sans-serif: 'Volte', sans-serif;
 $font-size-base: 0.9rem;
@@ -33,14 +31,13 @@ $cyan: #6cb2eb;
 /*------------------------------------------------------*\
      Project Brand Colors
 \*------------------------------------------------------*/
-$color--darkblue: rgb(0, 40, 60);
-$color--red: rgb(255, 56, 0);
+$color--darkblue: rgb(2, 0, 60);
+$color--red: rgb(245, 2, 0);
 $color--light: rgb(255, 255, 255);
 $color--dark: rgb(0, 0, 0);
+$color--grey: rgb(123, 123, 123);
 
-
-
-$primary:       $color--red !default;
+$primary: $color--darkblue !default;
 
 // Body
 $body-bg: $color--darkblue;
@@ -52,3 +49,6 @@ $border-radius-sm: .2rem !default;
 
 $btn-font-weight: $font-bold;
 $link-color: $body-bg;
+
+
+$nav-height: 10rem;

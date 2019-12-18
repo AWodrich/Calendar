@@ -2,9 +2,16 @@
     <div class="row">
         <div class="col-3">
             <div class="form-group">
+                <label
+                    class="filter-bar filter-bar__label"
+                    for="filteredData"
+                ><strong>Select Category</strong></label>
+
                 <select
                     class="form-control form-control--brand-red"
                     v-model="filteredData"
+                    id="filteredData"
+                    name="filteredData"
                 >
                     <option value="" disabled selected>Select Category</option>
                     <option

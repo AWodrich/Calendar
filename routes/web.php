@@ -13,3 +13,5 @@
 
 Route::get('/', 'ViewController@index');
 
+Route::get('/admin', 'ViewController@admin');
+

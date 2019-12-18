@@ -1,10 +1,6 @@
 <template>
     <div class="container mt-5">
         <div class="events-list">
-            <!-- Header -->
-            <div class="row justify-content-center mb-4 text-light">
-                <h1 class="heading--main heading">Sports Events 2020</h1>
-            </div>
 
             <div class="events-list__filter-bar">
                 <!-- FilterBar for searching Events -->
@@ -26,9 +22,18 @@
                 v-if="filteredSportCategories(eventItem)"
                 v-for="eventItem in list"
             >
-                <transition name="slide-fade">
                     <Event :event-item="eventItem" />
-                </transition>
+                <div
+                    class=""
+                    v-if="alterList"
+                >
+                    <span
+                        @click="removeItemFromDB(eventItem)"
+                        class="btn btn-outline-dark"
+                    >Delete</span>
+                    <span class="btn btn-outline-dark">New</span>
+                    <span class="btn btn-outline-dark">Update</span>
+                </div>
 
             </div>
         </div>
@@ -52,6 +57,9 @@ export default {
         events: {
             type: String,
             default: ''
+        },
+        alterList: {
+            required: false
         }
     },
     data() {
@@ -87,6 +95,9 @@ export default {
                 return true;
             }
         },
+        removeItemFromDB(eventItem) {
+            console.log('removing item from dab', eventItem)
+        }
     },
     mounted() {
         this.list = JSON.parse(this.events);

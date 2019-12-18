@@ -28,6 +28,9 @@ class ViewController extends Controller
      */
     public function index()
     {
+        // two possible ways to retrieve data from db and handle relations
+
+        // 1. way
         // $sport_events = SportingEvent::leftJoin('clubs as home', 'sporting_events._home_id', '=', 'home.id')
         //                              ->leftJoin('clubs as outward', 'sporting_events._outward_id', '=', 'outward.id')
         //                              ->leftJoin('disciplines as disc', 'sporting_events._discipline_id', '=', 'disc.id')
@@ -36,12 +39,24 @@ class ViewController extends Controller
         //                              ->orderBy('date', 'asc')
         //                              ->get();
 
+        // 2. way
         $sport_events = SportingEvent::with("hometeam", 'outwardteam', 'discipline')
                                      ->orderBy('date', 'asc')
                                      ->get();
 
 
         return view('index', [
+            'sport_events' => $sport_events,
+        ]);
+    }
+
+    public function admin()
+    {
+        $sport_events = SportingEvent::with("hometeam", 'outwardteam', 'discipline')
+                                     ->orderBy('date', 'asc')
+                                     ->get();
+
+        return view('admin', [
             'sport_events' => $sport_events,
         ]);
     }

@@ -1,0 +1,12 @@
+/*******************************************************************************
+ *
+ * Aspect Ratio Mixin for Preserving Container dimensions
+ *
+ ******************************************************************************/
+
+@mixin aspect-ratio($x: 16px, $y: 9px) {
+    $x--stripped: unit($x);
+    $y--stripped: unit($y);
+
+    padding-top: (($y / $x) * 100%);
+}

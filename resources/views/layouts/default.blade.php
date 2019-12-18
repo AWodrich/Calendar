@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php $lang = empty($lang) ? 'lang' : $lang; ?>
+
+
+    <!DOCTYPE html>
 <html
     lang="de"
     class="no-js h-full"
