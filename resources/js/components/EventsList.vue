@@ -9,6 +9,8 @@
                         @change="setCategoryFilter"
                         :categories="categories"
                     />
+
+                    <!-- navigate to event form-->
                     <div
                         class="events-list__btn"
                         v-if="adminMode"
@@ -23,8 +25,8 @@
 
             </div>
 
+            <!--  EventsList Navigation Bar -->
             <div class="events-list__navigation-bar px-4 py-2">
-                <!--  EventsList Navigation Bar -->
                 <EventsListNavigation />
             </div>
 
@@ -44,13 +46,15 @@
                 >Delete</span>
             </div>
 
-
+            <!-- Create Event -->
             <CreateEvent
                 @createdEvent="createEvent"
                 :categories="categories"
                 id="createEvent"
                 v-if="adminMode && !successMessage"
             />
+
+            <!--  Success Message when event is created-->
             <transition name="fade">
                 <div
                     class="flow-text text--lightblue mt-5"
@@ -70,7 +74,6 @@ import Event from './Event';
 import EventsListNavigation from './EventsListNavigation';
 import FilterBar from './FilterBar';
 import CreateEvent from './CreateEvent';
-
 
 
 import Vue from 'vue';
