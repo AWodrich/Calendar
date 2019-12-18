@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-2">
-            {{ eventItem.date }}
+            {{getConvertedDateFormat }}
         </div>
         <div class="col-1">
             {{ eventItem.time }}
@@ -36,7 +36,7 @@ export default {
     },
     computed: {
         getConvertedDateFormat() {
-            return new Date(this.eventItem.date).toString();
+            return new Date(this.eventItem.date).toDateString();
         }
     }
 }
