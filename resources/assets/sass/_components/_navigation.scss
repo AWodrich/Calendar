@@ -6,4 +6,10 @@
     &__logo {
         height: $nav-height;
     }
+
+    &__link {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }

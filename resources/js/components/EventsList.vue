@@ -11,15 +11,19 @@
                     />
                     <div
                         class="events-list__btn"
-                        v-if="alterList"
+                        v-if="adminMode"
                     >
-                        <a href="#createEvent" class="text--lightblue btn btn-outline-light">New Entry</a>
+                        <div
+                            v-scroll-to="'#createEvent'"
+                            class="text--lightblue btn btn-outline-light"
+                        >New Entry
+                        </div>
                     </div>
                 </div>
 
             </div>
 
-            <div class="events-list__navigation-bar p-2">
+            <div class="events-list__navigation-bar px-4 py-2">
                 <!--  EventsList Navigation Bar -->
                 <EventsListNavigation />
             </div>
@@ -27,21 +31,25 @@
 
             <!-- Event Item-->
             <div
-                class="events-list__item p-2"
+                class="events-list__item p-4"
                 v-if="filteredSportCategories(eventItem)"
                 v-for="eventItem in list"
             >
                 <Event :event-item="eventItem" />
 
                 <span
-                    v-if="alterList"
+                    v-if="adminMode"
                     @click="removeItemFromDB(eventItem)"
                     class="btn btn-outline-dark"
                 >Delete</span>
             </div>
 
 
-            <CreateEvent @selectedDate="setEventDate" id="createEvent" v-if="alterList"/>
+            <CreateEvent
+                @createdEvent="createEvent"
+                id="createEvent"
+                v-if="adminMode"
+            />
 
 
         </div>
@@ -70,14 +78,14 @@ export default {
         FilterBar,
         Event,
         EventsListNavigation,
-        CreateEvent
+        CreateEvent,
     },
     props: {
         events: {
             type: String,
             default: ''
         },
-        alterList: {
+        adminMode: {
             required: false
         }
     },
@@ -126,12 +134,9 @@ export default {
                 });
         },
 
-        createEvent() {
+        createEvent(event) {
             var self = this;
 
-            let event = {
-                date: this.eventDate || '',
-            }
             this.$http.post('/admin/create-event', event)
                 .then(function(data) {
                     console.log('event created', data);
@@ -140,10 +145,7 @@ export default {
                     alert('Something went wrong.');
                 });
         },
-        setEventDate(value) {
-            console.log('value of date', value)
-            this.eventDate = value;
-        }
+
     },
     mounted() {
         this.list = JSON.parse(this.events);

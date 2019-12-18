@@ -44,6 +44,8 @@
     id="app"
 >
     @yield('content')
+    @include('partials/footer')
+
 </main>
 
 

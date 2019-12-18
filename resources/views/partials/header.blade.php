@@ -1,3 +1,7 @@
+@php
+    isset($title) ?  $title : '';
+@endphp
+
 <div class="header">
     <img
         class="header__image"
@@ -5,8 +9,7 @@
         alt="Headerbild"
     >
     <h1 class="heading--main heading header__title">
-        Sport Events Calendar
+        {{ $title }}
     </h1>
-
 
 </div>

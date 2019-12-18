@@ -7,13 +7,11 @@
 @section('content')
 
     <div class="full-height">
-        <div class="container">
-            <div class="row justify-content-center">
-                <h1 class="heading--main heading text--lightblue">Welcome to Administration Page</h1>
-            </div>
-        </div>
+        @include('partials/navigation', ['url' => '/', 'link_text' => 'Go to Home'])
+
+        @include('partials/header', ['title' => 'Welcome to Administration Page'])
         <events-list
-            alter-list="true"
+            admin-mode="true"
             events="{{ json_encode($sport_events) }}"
         ></events-list>
 

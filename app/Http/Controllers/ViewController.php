@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Discipline;
 use App\SportingEvent;
+use App\Club;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ViewController extends Controller
 {
@@ -41,8 +44,8 @@ class ViewController extends Controller
 
         // 2. way
         $sport_events = SportingEvent::with("hometeam", 'outwardteam', 'discipline')
-                                     ->orderBy('date', 'asc')
-                                     ->get();
+            ->orderBy('date', 'asc')
+            ->get();
 
 
         return view('index', [
@@ -65,7 +68,7 @@ class ViewController extends Controller
     public function delete($id)
     {
 
-        $sport_events = SportingEvent::where('id','=', $id)
+        $sport_events = SportingEvent::where('id', '=', $id)
                                      ->delete();
 
         return view('admin', [
@@ -74,15 +77,29 @@ class ViewController extends Controller
     }
 
 
-    public function create()
+    public function create(Request $request)
     {
 
-        $sport_events = SportingEvent::where('id','=', $id)
-                                     ->delete();
 
-        return view('admin', [
-            'sport_events' => $sport_events,
-        ]);
+        $discipline = new Discipline;
+        $discipline->name = $request->input('name');
+        $discipline->save();
+
+
+        $club = new Club;
+        $club->name = $request->input('home_team');
+        $club->name = $request->input('outward_team');
+        $club->save();
+
+
+        $event = new SportingEvent;
+        // $event->date= $request->input('date');
+        $event->time = $request->input('time');
+        $event->referee = $request->input('referee');
+        $event->location = $request->input('location');
+
+        $event->save();
+
     }
 
 }

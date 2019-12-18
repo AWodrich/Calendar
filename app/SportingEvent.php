@@ -20,4 +20,9 @@ class SportingEvent extends Model
     {
         return $this->belongsTo(Discipline::class, '_discipline_id');
     }
+
+    public function store(Request $request)
+    {
+
+    }
 }

@@ -7,11 +7,13 @@
 import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+import vueScrollto from 'vue-scrollto';
 
 import EventsList from './components/EventsList';
 import SportEvents from './components/SportEvents';
 
 Vue.use(VueAxios, axios);
+Vue.use(vueScrollto);
 
 require('./bootstrap');
 
@@ -47,7 +49,7 @@ const app = new Vue({
     },
     components: {
         EventsList,
-        SportEvents
+        SportEvents,
     },
 
 }).$mount('#app');

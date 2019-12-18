@@ -1,6 +1,6 @@
 <div class="navigation">
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-between">
             <div class="col-6">
                 <a href="{{ trans('links.homepage') }}">
                     <img
@@ -9,7 +9,11 @@
                         alt="Logo"
                     >
                 </a>
-
+            </div>
+            <div class="flow-text navigation__link">
+                <a href="{{ asset($url) }}">
+                    {{ $link_text }}
+                </a>
             </div>
 
         </div>
