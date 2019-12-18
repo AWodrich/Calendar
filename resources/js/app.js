@@ -5,9 +5,13 @@
  */
 
 import Vue from 'vue';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
 
 import EventsList from './components/EventsList';
 import SportEvents from './components/SportEvents';
+
+Vue.use(VueAxios, axios);
 
 require('./bootstrap');
 

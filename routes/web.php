@@ -15,3 +15,6 @@ Route::get('/', 'ViewController@index');
 
 Route::get('/admin', 'ViewController@admin');
 
+Route::delete('/admin/delete/{id}', 'ViewController@delete');
+Route::post('/admin/create-event', 'ViewController@create');
+

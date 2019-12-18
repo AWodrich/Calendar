@@ -1,5 +1,4 @@
 <template>
-    <div class="row">
         <div class="col-3">
             <div class="form-group">
                 <label
@@ -26,7 +25,6 @@
                 </select>
             </div>
         </div>
-    </div>
 </template>
 
 <script>

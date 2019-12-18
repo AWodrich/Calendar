@@ -4,10 +4,19 @@
 
             <div class="events-list__filter-bar">
                 <!-- FilterBar for searching Events -->
-                <FilterBar
-                    @change="setCategoryFilter"
-                    :categories="categories"
-                />
+                <div class="row">
+                    <FilterBar
+                        @change="setCategoryFilter"
+                        :categories="categories"
+                    />
+                    <div
+                        class="events-list__btn"
+                        v-if="alterList"
+                    >
+                        <a href="#createEvent" class="text--lightblue btn btn-outline-light">New Entry</a>
+                    </div>
+                </div>
+
             </div>
 
             <div class="events-list__navigation-bar p-2">
@@ -22,20 +31,19 @@
                 v-if="filteredSportCategories(eventItem)"
                 v-for="eventItem in list"
             >
-                    <Event :event-item="eventItem" />
-                <div
-                    class=""
-                    v-if="alterList"
-                >
-                    <span
-                        @click="removeItemFromDB(eventItem)"
-                        class="btn btn-outline-dark"
-                    >Delete</span>
-                    <span class="btn btn-outline-dark">New</span>
-                    <span class="btn btn-outline-dark">Update</span>
-                </div>
+                <Event :event-item="eventItem" />
 
+                <span
+                    v-if="alterList"
+                    @click="removeItemFromDB(eventItem)"
+                    class="btn btn-outline-dark"
+                >Delete</span>
             </div>
+
+
+            <CreateEvent @selectedDate="setEventDate" id="createEvent" v-if="alterList"/>
+
+
         </div>
     </div>
 
@@ -44,14 +52,25 @@
 <script>
 import Event from './Event';
 import EventsListNavigation from './EventsListNavigation';
-import FilterBar from './FilterBar'
+import FilterBar from './FilterBar';
+import CreateEvent from './CreateEvent';
+
+
+
+import Vue from 'vue';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+
+Vue.use(VueAxios, axios);
+
 
 export default {
     name: 'EventsList',
     components: {
         FilterBar,
         Event,
-        EventsListNavigation
+        EventsListNavigation,
+        CreateEvent
     },
     props: {
         events: {
@@ -67,6 +86,7 @@ export default {
             list: [],
             categories: [],
             currentSportCategory: null,
+            eventDate: ''
         }
 
     },
@@ -96,7 +116,33 @@ export default {
             }
         },
         removeItemFromDB(eventItem) {
-            console.log('removing item from dab', eventItem)
+            var self = this;
+            this.$http.delete(`/admin/delete/${ eventItem.id }`)
+                .then(function(data) {
+                    console.log('event removed', data);
+                }, function(error) {
+                    // Error response from server.
+                    alert('Something went wrong.');
+                });
+        },
+
+        createEvent() {
+            var self = this;
+
+            let event = {
+                date: this.eventDate || '',
+            }
+            this.$http.post('/admin/create-event', event)
+                .then(function(data) {
+                    console.log('event created', data);
+                }, function(error) {
+                    // Error response from server.
+                    alert('Something went wrong.');
+                });
+        },
+        setEventDate(value) {
+            console.log('value of date', value)
+            this.eventDate = value;
         }
     },
     mounted() {

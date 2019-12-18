@@ -62,4 +62,27 @@ class ViewController extends Controller
     }
 
 
+    public function delete($id)
+    {
+
+        $sport_events = SportingEvent::where('id','=', $id)
+                                     ->delete();
+
+        return view('admin', [
+            'sport_events' => $sport_events,
+        ]);
+    }
+
+
+    public function create()
+    {
+
+        $sport_events = SportingEvent::where('id','=', $id)
+                                     ->delete();
+
+        return view('admin', [
+            'sport_events' => $sport_events,
+        ]);
+    }
+
 }
